@@ -36,6 +36,11 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build  # 运行 package.json 中定义的 build 脚本
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ./dist  # 指定构建输出的目录
 
 
   # Deployment job
@@ -46,6 +51,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: ./dist  # 下载到指定的目录
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
