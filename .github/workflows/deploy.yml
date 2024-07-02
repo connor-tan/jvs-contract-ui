@@ -38,6 +38,10 @@ jobs:
         run: npm run build  # 运行 package.json 中定义的 build 脚本
       - name: Output dist size
         run: du -sh ./dist  # 输出 dist 目录的大小
+      - name: Remove symlinks in dist
+        run: |
+          find ./dist -type l -exec rm {} \;
+          echo "Removed symlinks from dist directory"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
