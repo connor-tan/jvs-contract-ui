@@ -17,7 +17,6 @@ import { TonClient, TonClient4 } from '@ton/ton';
 import { getHttpV4Endpoint } from '@orbs-network/ton-access';
 import { type NetworkProvider } from './NetworkProvider';
 import { type SendProvider } from './send/SendProvider';
-import { FSStorage } from './storage/FSStorage';
 import path from 'path';
 import {type Config } from '@/config/Config';
 import { mnemonicToPrivateKey } from '@ton/crypto';
